@@ -98,7 +98,7 @@ class NodeDB
 
     /** Update user info and channel for this node based on received user data
      */
-    bool updateUser(uint32_t nodeId, const meshtastic_User &p, uint8_t channelIndex = 0);
+    bool updateUser(uint32_t nodeId, meshtastic_User &p, uint8_t channelIndex = 0);
 
     /// @return our node number
     NodeNum getNodeNum() { return myNodeInfo.my_node_num; }
@@ -127,7 +127,7 @@ class NodeDB
 
     void initConfigIntervals(), initModuleConfigIntervals(), resetNodes(), removeNodeByNum(NodeNum nodeNum);
 
-    bool factoryReset();
+    bool factoryReset(bool eraseBleBonds = false);
 
     LoadFileResult loadProto(const char *filename, size_t protoSize, size_t objSize, const pb_msgdesc_t *fields,
                              void *dest_struct);
